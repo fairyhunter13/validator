@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/Code-Hex/uniseg"
-	"github.com/go-playground/validator/v10"
+	"github.com/fairyhunter13/validator/v10"
 )
 
 // NotBlank is the validation function for validating if the current field

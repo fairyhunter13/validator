@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/go-playground/validator/v10"
+	"github.com/fairyhunter13/validator/v10"
 )
 
 // User contains user information

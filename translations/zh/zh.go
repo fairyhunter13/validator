@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/fairyhunter13/validator/v10"
 	"github.com/go-playground/locales"
 	ut "github.com/go-playground/universal-translator"
-	"github.com/go-playground/validator/v10"
 )
 
 // RegisterDefaultTranslations registers a set of default translations
