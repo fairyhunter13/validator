@@ -16,6 +16,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/Code-Hex/uniseg"
 	urn "github.com/leodido/go-urn"
 )
 
@@ -1460,7 +1461,7 @@ func isGteField(fl FieldLevel) bool {
 	}
 
 	// default reflect.String
-	return len(field.String()) >= len(currentField.String())
+	return uniseg.GraphemeClusterCount(field.String()) >= uniseg.GraphemeClusterCount(currentField.String())
 }
 
 // IsGtField is the validation function for validating if the current field's value is greater than the field specified by the param's value.
@@ -1507,7 +1508,7 @@ func isGtField(fl FieldLevel) bool {
 	}
 
 	// default reflect.String
-	return len(field.String()) > len(currentField.String())
+	return uniseg.GraphemeClusterCount(field.String()) > uniseg.GraphemeClusterCount(currentField.String())
 }
 
 // IsGte is the validation function for validating if the current field's value is greater than or equal to the param's value.
@@ -1521,7 +1522,7 @@ func isGte(fl FieldLevel) bool {
 	case reflect.String:
 		p := asInt(param)
 
-		return int64(utf8.RuneCountInString(field.String())) >= p
+		return int64(uniseg.GraphemeClusterCount(field.String())) >= p
 
 	case reflect.Slice, reflect.Map, reflect.Array:
 		p := asInt(param)
@@ -1568,7 +1569,7 @@ func isGt(fl FieldLevel) bool {
 	case reflect.String:
 		p := asInt(param)
 
-		return int64(utf8.RuneCountInString(field.String())) > p
+		return int64(uniseg.GraphemeClusterCount(field.String())) > p
 
 	case reflect.Slice, reflect.Map, reflect.Array:
 		p := asInt(param)
@@ -1611,7 +1612,7 @@ func hasLengthOf(fl FieldLevel) bool {
 	case reflect.String:
 		p := asInt(param)
 
-		return int64(utf8.RuneCountInString(field.String())) == p
+		return int64(uniseg.GraphemeClusterCount(field.String())) == p
 
 	case reflect.Slice, reflect.Map, reflect.Array:
 		p := asInt(param)
@@ -1686,7 +1687,7 @@ func isLteField(fl FieldLevel) bool {
 	}
 
 	// default reflect.String
-	return len(field.String()) <= len(currentField.String())
+	return uniseg.GraphemeClusterCount(field.String()) <= uniseg.GraphemeClusterCount(currentField.String())
 }
 
 // IsLtField is the validation function for validating if the current field's value is less than the field specified by the param's value.
@@ -1733,7 +1734,7 @@ func isLtField(fl FieldLevel) bool {
 	}
 
 	// default reflect.String
-	return len(field.String()) < len(currentField.String())
+	return uniseg.GraphemeClusterCount(field.String()) < uniseg.GraphemeClusterCount(currentField.String())
 }
 
 // IsLte is the validation function for validating if the current field's value is less than or equal to the param's value.
@@ -1747,7 +1748,7 @@ func isLte(fl FieldLevel) bool {
 	case reflect.String:
 		p := asInt(param)
 
-		return int64(utf8.RuneCountInString(field.String())) <= p
+		return int64(uniseg.GraphemeClusterCount(field.String())) <= p
 
 	case reflect.Slice, reflect.Map, reflect.Array:
 		p := asInt(param)
@@ -1794,7 +1795,7 @@ func isLt(fl FieldLevel) bool {
 	case reflect.String:
 		p := asInt(param)
 
-		return int64(utf8.RuneCountInString(field.String())) < p
+		return int64(uniseg.GraphemeClusterCount(field.String())) < p
 
 	case reflect.Slice, reflect.Map, reflect.Array:
 		p := asInt(param)

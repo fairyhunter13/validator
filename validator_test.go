@@ -1482,6 +1482,7 @@ func TestCrossStructEqFieldValidation(t *testing.T) {
 	errs := validate.Struct(test)
 	Equal(t, errs, nil)
 
+	time.Sleep(1 * time.Second)
 	newTime := time.Now().UTC()
 	test.CreatedAt = &newTime
 
@@ -4241,6 +4242,7 @@ func TestIsNeFieldValidation(t *testing.T) {
 	NotEqual(t, errs, nil)
 	AssertError(t, errs, "Test.Start", "Test.Start", "Start", "Start", "nefield")
 
+	time.Sleep(1 * time.Second)
 	now3 := time.Now().UTC()
 
 	sv = &Test{
@@ -4382,6 +4384,7 @@ func TestIsEqFieldValidation(t *testing.T) {
 	errs = validate.Struct(sv)
 	Equal(t, errs, nil)
 
+	time.Sleep(1 * time.Second)
 	now3 := time.Now().UTC()
 
 	sv = &Test{
